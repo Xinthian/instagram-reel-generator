@@ -1,0 +1,20 @@
+cookies.txt
+cookies*.txt
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+# Local backup archives with legacy names; these may contain credentials.
+xinthian@xhome*
+*.mp4
+*.description
+*.png
+.DS_Store

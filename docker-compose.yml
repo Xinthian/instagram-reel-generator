@@ -1,0 +1,22 @@
+services:
+  reel-generator:
+    build: .
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:5050:7008"
+    environment:
+      TZ: Asia/Kolkata
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      AI_CAPTIONS_ENABLED: ${AI_CAPTIONS_ENABLED:-true}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-openrouter/free}
+      DOWNLOAD_TIMEOUT_SECONDS: ${DOWNLOAD_TIMEOUT_SECONDS:-180}
+      RENDER_TIMEOUT_SECONDS: ${RENDER_TIMEOUT_SECONDS:-600}
+      MAX_VIDEO_BYTES: ${MAX_VIDEO_BYTES:-104857600}
+      MAX_SCREENSHOT_BYTES: ${MAX_SCREENSHOT_BYTES:-10485760}
+      MAX_VIDEO_SECONDS: ${MAX_VIDEO_SECONDS:-180}
+      MAX_CONCURRENT_JOBS: ${MAX_CONCURRENT_JOBS:-1}
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped

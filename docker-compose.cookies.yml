@@ -1,0 +1,14 @@
+# Optional: docker compose -f docker-compose.yml -f docker-compose.cookies.yml up -d --build
+services:
+  reel-generator:
+    # Match the host cookie owner; keep the source file private (mode 600).
+    user: "${REEL_UID:?Set REEL_UID to your host user ID}:${REEL_GID:?Set REEL_GID to your host group ID}"
+    environment:
+      COOKIES_PATH: /run/secrets/instagram-cookies.txt
+    volumes:
+      - type: bind
+        source: ${COOKIES_PATH:?Set COOKIES_PATH to an existing readable cookie file}
+        target: /run/secrets/instagram-cookies.txt
+        read_only: true
+        bind:
+          create_host_path: false

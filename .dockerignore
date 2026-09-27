@@ -1,0 +1,13 @@
+# Allowlist the shared Docker/devcontainer build context.
+**
+!Dockerfile
+!.dockerignore
+!requirements.txt
+!server.py
+!app_security.py
+!generate_reel.py
+!instalinkopen.py
+!font.ttf
+!logo.png
+!.devcontainer/
+!.devcontainer/Dockerfile
